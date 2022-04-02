@@ -1,13 +1,15 @@
 const path = require('path');
 
 module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
   extends: [
-    '@astronomer/eslint-config-astro',
-    'airbnb',
-    'airbnb-typescript',
+    // 'airbnb',
+    // 'airbnb-typescript',
     'prettier',
+    'plugin:@typescript-eslint/recommended'
   ],
-  plugins: ['prettier'],
+  plugins: ['prettier', '@typescript-eslint'],
   parserOptions: {
     project: path.resolve(__dirname, './tsconfig.json'),
   },
@@ -18,20 +20,5 @@ module.exports = {
     'prettier/prettier': ['error'],
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: true,
-        optionalDependencies: false,
-        peerDependencies: false,
-      },
-    ],
-    "react/function-component-definition": [
-      2,
-      {
-        namedComponents: "arrow-function",
-        unnamedComponents: "arrow-function",
-      },
-    ],
   },
 };
