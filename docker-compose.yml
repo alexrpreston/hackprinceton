@@ -10,6 +10,7 @@ services:
     environment:
       - EXAMPLE_ENV=XYZ
       - DB_URI=postgresql://postgres:postgres@postgres:5432/hackpton
+      - OPENAIAPIKEY=${OPENAPIKEY}
     depends_on:
       - postgres
     networks:
