@@ -1,16 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import { CssBaseline } from '@mui/material';
+
 import Home from './pages/Home';
+import Header from './components/Header';
 
-const root = ReactDOM.createRoot(document.getElementById('root')!);
-
-root.render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-  </Router>,
+ReactDOM.render(
+  <>
+    <CssBaseline />
+    <Header />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
+  </>,
+  document.getElementById('root'),
 );

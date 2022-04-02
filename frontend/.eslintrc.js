@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   extends: [
+    '@astronomer/eslint-config-astro',
     'airbnb',
     'airbnb-typescript',
     'prettier',
@@ -23,6 +24,13 @@ module.exports = {
         devDependencies: true,
         optionalDependencies: false,
         peerDependencies: false,
+      },
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        namedComponents: "arrow-function",
+        unnamedComponents: "arrow-function",
       },
     ],
   },
