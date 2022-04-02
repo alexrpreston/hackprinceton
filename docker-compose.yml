@@ -28,6 +28,19 @@ services:
     networks:
       - hackpton
 
+  frontend:
+    build: frontend/
+    volumes:
+      - ./frontend/:/app
+      - '/app/node_modules'
+    ports:
+      - 3000:3000
+    environment:
+      - BASE_URL=api:8870
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - hackpton
+
 volumes:
   postgres_data: null
 
