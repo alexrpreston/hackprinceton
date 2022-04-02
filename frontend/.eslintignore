@@ -1,0 +1,10 @@
+# Ignore node_modules
+node_modules
+
+# Ignore some folders
+benchmark
+coverage
+
+# Ignore not supported files
+!.*.js
+*.d.ts
