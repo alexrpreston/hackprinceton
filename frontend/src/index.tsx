@@ -12,14 +12,14 @@ import Editor from './pages/Editor';
 
 ReactDOM.render(
   <ChakraProvider>
-    <AppContainer>
-      <Router>
+    <Router>
+      <AppContainer>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/editor" element={<Editor />} />
         </Routes>
-      </Router>
-    </AppContainer>
+      </AppContainer>
+    </Router>
   </ChakraProvider>,
   document.getElementById('root'),
 );
