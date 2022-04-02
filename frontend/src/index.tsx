@@ -3,20 +3,23 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { CssBaseline } from '@mui/material';
+import { ChakraProvider } from '@chakra-ui/react';
+
+import AppContainer from './containers/AppContainer';
 
 import Home from './pages/Home';
-import Header from './components/Header';
+import Editor from './pages/Editor';
 
 ReactDOM.render(
-  <>
-    <CssBaseline />
-    <Header />
+  <ChakraProvider>
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <AppContainer>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/editor" element={<Editor />} />
+        </Routes>
+      </AppContainer>
     </Router>
-  </>,
+  </ChakraProvider>,
   document.getElementById('root'),
 );
