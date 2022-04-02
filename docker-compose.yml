@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  api:
+    build: api/
+    volumes:
+      - ./api/:/app
+    ports:
+      - 8870:8870
+    environment:
+      - EXAMPLE_ENV=XYZ
+      - DB_URI=postgresql://postgres:postgres@postgres:5432/hackpton
+    depends_on:
+      - postgres
+    networks:
+      - hackpton
+
+  postgres:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=hackpton
+    ports:
+      - 5432:5432
+    networks:
+      - hackpton
+
+volumes:
+  postgres_data: null
+
+networks:
+  hackpton:
+    name: hackpton
+    driver: bridge
+
