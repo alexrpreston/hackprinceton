@@ -1,0 +1,13 @@
+{
+  "name": "Right with Sway",
+  "description": "Eliminate bias in the news with Right with Sway.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "interface.html",
+    "default_title": "Right with Sway"
+  }
+}
