@@ -13,21 +13,17 @@ const AppContainer: React.FC<Props> = ({ children }) => {
   const [showNav, setShowNav] = useState(location && location.pathname !== '/');
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 100 || location.pathname !== '/') {
-        setShowNav(true);
-      } else {
-        setShowNav(false);
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    console.log(location);
     if (location.pathname !== '/') {
       setShowNav(true);
     } else {
       setShowNav(false);
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 100 || location.pathname !== '/') {
+          setShowNav(true);
+        } else {
+          setShowNav(false);
+        }
+      });
     }
   }, [location]);
 
