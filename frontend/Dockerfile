@@ -11,4 +11,6 @@ RUN npm install framer-motion@3.10.6
 
 COPY ./src ./src
 
-CMD ["npm", "start"]
+EXPOSE 80
+
+CMD ["PORT=80", "npm", "start"]

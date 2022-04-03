@@ -12,11 +12,13 @@ const Editor: React.FC = () => {
   const [biasLevel, setBiasLevel] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log(process.env);
+
   const onClick = () => {
     setIsLoading(true);
 
     axios
-      .post(`http://localhost/api/v1/classify-bias-level`, value)
+      .post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/classify-bias-level`, value)
       .then((res) => {
         console.log(res);
         setBiasLevel(res.data);
@@ -28,7 +30,7 @@ const Editor: React.FC = () => {
       });
 
     axios
-      .post(`http://localhost/api/v1/summarize-bias`, value)
+      .post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/summarize-bias`, value)
       .then((res) => {
         console.log(res);
         setBias(res.data);
@@ -48,11 +50,11 @@ const Editor: React.FC = () => {
         </HStack>
       </Box>
 
-      {bias && (biasLevel === 'extremely_biased' || biasLevel === 'somewhat_biased') && (
+      {bias && (biasLevel === 'Extremely biased' || biasLevel === 'Somewhat biased') && (
         <HStack py={5} pb={2}>
           <Icon
-            as={biasLevel === 'extremely_biased' ? FiAlertCircle : FiAlertTriangle}
-            color={biasLevel === 'extremely_biased' ? 'red.500' : 'orange.500'}
+            as={biasLevel === 'Extremely biased' ? FiAlertCircle : FiAlertTriangle}
+            color={biasLevel === 'Extremely biased' ? 'red.500' : 'orange.500'}
             mx={2}
           />
           <Text fontWeight="bold">{bias}</Text>
