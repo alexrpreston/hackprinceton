@@ -2,6 +2,8 @@ from fastapi import APIRouter, Body, Query, WebSocket
 
 from app.utils import model, parsing, search
 
+from bs4 import BeautifulSoup
+
 router = APIRouter()
 
 
@@ -45,16 +47,25 @@ def classify_bias_level(
 
     return bias_level
 
-@router.websocket("/search_and_rank")
+@router.websocket("/search")
 async def websocket_endpoint(
     websocket: WebSocket,
-    query: str = Query(...)
+    query: str = Query(..., description="The query to search for."),
 ):
     """
     Search a query and rank the results by level of bias
     """
     results = search.google_search(query, num=10)
+
     await websocket.accept()
-    for i in range(len(results)):
-        results[i]["biasLevel"] = await classify_bias_level(input=search.get_html_from_url(results[i]["url"]), type="html")
-        await websocket.send_text({results[i]})
+
+    for search_result in results:
+        html = search.get_html_from_url(search_result["url"])
+        bias_level = classify_bias_level(html, type = "html")
+
+        await websocket.send_json({
+            "title": BeautifulSoup(search_result["title"], "html.parser").text,
+            "snippet": BeautifulSoup(search_result["htmlSnippet"], "html.parser").text,
+            "url": search_result["url"],
+            "bias_level": bias_level,
+        })
