@@ -12,7 +12,7 @@ import Typist from '../components/Typist';
 
 const MotionBox = motion(Box);
 
-const Home = () => {
+const Home: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {

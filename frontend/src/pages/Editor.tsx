@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box, Textarea, Spacer, Text, Icon, Center, Button, Flex, HStack } from '@chakra-ui/react';
+import { Box, Textarea, Text, Icon, Button, Flex, HStack } from '@chakra-ui/react';
 
 import axios from 'axios';
 
