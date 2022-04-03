@@ -61,8 +61,8 @@ const Home = () => {
                 <Heading size="md">Identify bias in the media</Heading>
               </HStack>
               <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
-                congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
+                Sway helps identify bias in the media by providing a simple chrome extension. 
+                The extension provides a degree of bias and the cause of the bias (if any exists) for any website, all with the click of a button.
               </Text>
               <Button size="sm" mt={2}>
                 Chrome Extension <Icon as={FiArrowRight} ml={2} />
@@ -75,8 +75,8 @@ const Home = () => {
                 <Heading size="md">Understand hidden biases in your own work</Heading>
               </HStack>
               <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
-                congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
+              Sway's writing editor helps users write without bias by identifying and summarizing potential areas of bias in their text. 
+              This is especially useful for implicit sources of bias.
               </Text>
               <Button as={Link} to="/editor" size="sm" mt={2}>
                 Online Editor <Icon as={FiArrowRight} ml={2} />
@@ -89,8 +89,8 @@ const Home = () => {
                 <Heading size="md">Search in a bias-conscious manner</Heading>
               </HStack>
               <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
-                congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
+                Sway Search provides an interface to rank search results based on the degree of bias of a website's content.
+                Get the search quality of Google with the trustworthiness of Sway.
               </Text>
               <Button size="sm" mt={2} disabled>
                 Coming Soon...
