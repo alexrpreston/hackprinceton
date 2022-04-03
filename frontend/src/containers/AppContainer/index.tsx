@@ -47,7 +47,7 @@ const AppContainer: React.FC<Props> = ({ children }) => {
 
           <Link to="/">
             <Text>
-              Right with <i>Sway</i>
+              <b>Sway</b>
             </Text>
           </Link>
 

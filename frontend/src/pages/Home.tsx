@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsTyping(true);
-    }, 3000);
+    }, 2000);
   }, []);
 
   return (
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
       <Box width="100%">
         <Box width="100%">
           <Box as="h1" fontSize="6xl" fontWeight="bold">
-            <Typist text={'Right with Sway.'} />
+            <Typist text={'Sway.'} />
           </Box>
 
           <AnimatePresence>
@@ -95,8 +95,8 @@ const Home: React.FC = () => {
                 of a website's content. Get the search quality of Google with the trustworthiness of
                 Sway.
               </Text>
-              <Button size="sm" mt={2} disabled>
-                Coming Soon...
+              <Button as={Link} size="sm" mt={2} to="/search">
+                Search <Icon as={FiArrowRight} ml={2} />
               </Button>
             </Box>
           </MotionBox>
