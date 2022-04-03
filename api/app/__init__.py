@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Body
 from json import loads
-from app import summarize_text, remove_text_bias
+from app import summarize_text, remove_text_bias, search_bias
 
 app = FastAPI()
 
@@ -15,3 +15,7 @@ async def summarize_bias(text: str = Body(...)):
 @app.post("/remove-bias")
 async def remove_bias(text: str = Body(...)):
     return remove_text_bias.remove_bias(text)
+
+@app.post("/search-bias")
+async def search(text: str = Body(...)):
+    return search_bias.get_bias(text)
