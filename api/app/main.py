@@ -27,10 +27,14 @@ async def summarize_biasHTML(text: str = Body(...)):
     soup = BeautifulSoup(text.summary(), 'html.parser')
     text = soup.get_text()
     cleanedText = text.replace("\n"," ").replace("\r", "")
+    print(cleanedText)
+    print(summarize_text.summarize_text(cleanedText))
     return summarize_text.summarize_text(cleanedText)
 
 @app.post("/summarize-bias")
 async def summarize_bias(text: str = Body(...)):
+    print(text)
+    print(summarize_text.summarize_text(text))
     return summarize_text.summarize_text(text)
 
 
