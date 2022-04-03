@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Box width="100%" minHeight="250px">
+      <Box width="100%">
         <Box width="100%">
           <Box as="h1" fontSize="6xl" fontWeight="bold">
             <Typist text={'Right with Sway.'} />
@@ -36,14 +36,16 @@ const Home = () => {
                   Fighting bias in the media by raising awareness and providing a platform for
                   people to eliminate bias in their writing.
                 </Text>
-                <HStack spacing={4}>
-                  <Button as={Link} to="/editor">
-                    Eliminate bias with our Editor <Icon as={FiArrowRight} ml={2} />
-                  </Button>
-                  <Button colorScheme="blue">
-                    Get the Extension <Icon as={FiArrowRight} ml={2} />
-                  </Button>
-                </HStack>
+                {/* <HStack spacing={4}> */}
+                {/*   <Button as={Link} to="/editor"> */}
+                {/*     Eliminate bias with our Editor <Icon as={FiArrowRight} ml={2} /> */}
+                {/*   </Button> */}
+                {/*   <Button colorScheme="blue"> */}
+                {/*     Get the Extension <Icon as={FiArrowRight} ml={2} /> */}
+                {/*   </Button> */}
+                {/* </HStack> */}
+
+                <hr />
               </MotionBox>
             )}
           </AnimatePresence>
@@ -52,7 +54,7 @@ const Home = () => {
 
       <AnimatePresence>
         {isTyping && (
-          <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }} my={5}>
             <Box pb={5}>
               <HStack pb={1}>
                 <FiChrome size={20} />
@@ -62,6 +64,9 @@ const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
                 congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
               </Text>
+              <Button size="sm" mt={2}>
+                Chrome Extension <Icon as={FiArrowRight} ml={2} />
+              </Button>
             </Box>
 
             <Box py={5}>
@@ -73,6 +78,9 @@ const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
                 congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
               </Text>
+              <Button as={Link} to="/editor" size="sm" mt={2}>
+                Online Editor <Icon as={FiArrowRight} ml={2} />
+              </Button>
             </Box>
 
             <Box py={5}>
@@ -84,6 +92,9 @@ const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
                 congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
               </Text>
+              <Button size="sm" mt={2} disabled>
+                Coming Soon...
+              </Button>
             </Box>
           </MotionBox>
         )}
