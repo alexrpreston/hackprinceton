@@ -40,6 +40,6 @@ def classify_bias_level(
     else:
         raise ValueError("type must be either 'text' or 'html'.")
 
-    model.classify_bias_level(text)
+    bias_level = model.classify_bias_level(text)
 
-    return "Lorem ipsum..."
+    return bias_level

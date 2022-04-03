@@ -8,11 +8,10 @@ services:
     ports:
       - 80:80
     environment:
+      - OPENAI_CLASSIFICATION_MODEL_NAME=${OPENAI_CLASSIFICATION_MODEL_NAME}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - EXAMPLE_ENV=XYZ
       - DB_URI=postgresql://postgres:postgres@postgres:5432/hackpton
-      - OPENAIAPIKEY=${OPENAPIKEY}
-      - GOOGLESEARCHAPIKEY=${GOOGLESEARCHAPIKEY}
     depends_on:
       - postgres
     networks:
