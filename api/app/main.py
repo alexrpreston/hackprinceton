@@ -3,6 +3,7 @@ from json import loads
 from app import summarize_text, remove_text_bias, search_bias
 from bs4 import BeautifulSoup
 from readability import Document
+import re
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -25,7 +26,8 @@ async def summarize_biasHTML(text: str = Body(...)):
     text = Document(text)
     soup = BeautifulSoup(text.summary(), 'html.parser')
     text = soup.get_text()
-    return summarize_text.summarize_text(text)
+    cleanedText = text.replace("\n"," ").replace("\r", "")
+    return summarize_text.summarize_text(cleanedText)
 
 @app.post("/summarize-bias")
 async def summarize_bias(text: str = Body(...)):
