@@ -44,7 +44,7 @@ def classify_bias_level(text):
     response = openai.Completion.create(
         model = model_name,
         prompt = prompt,
-        max_tokens = 1,
+        max_tokens = 5,
         logprobs = 3,
     )
 
