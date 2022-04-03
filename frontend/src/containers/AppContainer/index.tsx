@@ -2,24 +2,34 @@ import React, { useState, useEffect } from 'react';
 
 import { Box, Text, Center, HStack, Flex, Spacer } from '@chakra-ui/react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface Props {
   children: React.ReactNode;
 }
 
 const AppContainer: React.FC<Props> = ({ children }) => {
-  const [showNav, setShowNav] = useState(false);
+  const location = useLocation();
+  const [showNav, setShowNav] = useState(location && location.pathname !== '/');
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 100) {
+      if (window.pageYOffset > 100 || location.pathname !== '/') {
         setShowNav(true);
       } else {
         setShowNav(false);
       }
     });
   }, []);
+
+  useEffect(() => {
+    console.log(location);
+    if (location.pathname !== '/') {
+      setShowNav(true);
+    } else {
+      setShowNav(false);
+    }
+  }, [location]);
 
   return (
     <Box>
@@ -33,6 +43,7 @@ const AppContainer: React.FC<Props> = ({ children }) => {
           top={0}
           left={0}
           position="fixed"
+          zIndex={1}
         >
           <Box w={200} />
 
@@ -54,7 +65,7 @@ const AppContainer: React.FC<Props> = ({ children }) => {
         </HStack>
       )}
 
-      <Box>{children}</Box>
+      <Box py={10}>{children}</Box>
     </Box>
   );
 };
