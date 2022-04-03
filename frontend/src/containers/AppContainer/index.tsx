@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Box, Text, Center, HStack, Flex, Spacer } from '@chakra-ui/react';
 
@@ -8,31 +8,55 @@ interface Props {
   children: React.ReactNode;
 }
 
-const AppContainer: React.FC<Props> = ({ children }) => (
-  <Box>
-    <HStack w="100vw" bgColor="white" borderBottom="1px solid gray" px={3} py={1}>
-      <Box w={200} />
+const AppContainer: React.FC<Props> = ({ children }) => {
+  const [showNav, setShowNav] = useState(false);
 
-      <Spacer />
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+    });
+  }, []);
 
-      <Link to="/">
-        <HStack spacing={1.5}>
-          <Text>Right with</Text>
-          <Text fontStyle="italic">Sway</Text>
+  return (
+    <Box>
+      {showNav && (
+        <HStack
+          w="100vw"
+          bgColor="white"
+          borderBottom="1px solid gray"
+          px={3}
+          py={1}
+          top={0}
+          left={0}
+          position="fixed"
+        >
+          <Box w={200} />
+
+          <Spacer />
+
+          <Link to="/">
+            <Text>
+              Right with <i>Sway</i>
+            </Text>
+          </Link>
+
+          <Spacer />
+
+          <Box float="right" w={200} textAlign="right">
+            <Link to="/editor">
+              <Text>Check out our Editor!</Text>
+            </Link>
+          </Box>
         </HStack>
-      </Link>
+      )}
 
-      <Spacer />
-
-      <Box float="right" w={200} textAlign="right">
-        <Link to="/editor">
-          <Text>Check out our Editor!</Text>
-        </Link>
-      </Box>
-    </HStack>
-
-    <Box>{children}</Box>
-  </Box>
-);
+      <Box>{children}</Box>
+    </Box>
+  );
+};
 
 export default AppContainer;
