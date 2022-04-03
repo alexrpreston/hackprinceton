@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Body, Query
+from fastapi import APIRouter, Body, Query, WebSocket
 
-from app.utils import model, parsing
+from app.utils import model, parsing, search
 
 router = APIRouter()
+
 
 @router.post("/summarize-bias")
 def summarize_bias(
@@ -24,7 +25,6 @@ def summarize_bias(
 
     return output.strip()
 
-
 @router.post("/classify-bias-level")
 def classify_bias_level(
     input: str = Body(..., description="The text to summarize. Either text or HTML."),
@@ -44,3 +44,17 @@ def classify_bias_level(
     bias_level = model.classify_bias_level(cleaned_text)
 
     return bias_level
+
+@router.websocket("/search_and_rank")
+async def websocket_endpoint(
+    websocket: WebSocket,
+    query: str = Query(...)
+):
+    """
+    Search a query and rank the results by level of bias
+    """
+    results = search.google_search(query, num=10)
+    await websocket.accept()
+    for i in range(len(results)):
+        results[i]["biasLevel"] = await classify_bias_level(input=search.get_html_from_url(results[i]["url"]), type="html")
+        await websocket.send_text({results[i]})

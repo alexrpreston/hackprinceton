@@ -4,3 +4,4 @@ requests
 openai
 beautifulsoup4
 readability-lxml
+google-api-python-client
