@@ -3,7 +3,7 @@ import openai
 
 openai.api_key = os.getenv("OPENAIAPIKEY")
 
-def remove_bias(text):
+def remove_bias(text): 
 
     response = openai.Edit.create(
     engine="text-davinci-edit-001",

@@ -6,7 +6,7 @@ services:
     volumes:
       - ./api/:/app
     ports:
-      - 8870:8870
+      - 80:80
     environment:
       - EXAMPLE_ENV=XYZ
       - DB_URI=postgresql://postgres:postgres@postgres:5432/hackpton
