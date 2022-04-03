@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom';
 
 import { FiArrowRight } from 'react-icons/fi';
 
+import { motion, AnimatePresence } from 'framer-motion';
+
 import Typist from '../components/Typist';
+
+const MotionBox = motion(Box);
 
 const Home = () => {
   const [isTyping, setIsTyping] = useState(false);
@@ -14,31 +18,37 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsTyping(true);
-    }, 1000);
+    }, 3000);
   }, []);
 
   return (
     <Container>
-      <Center width="100%" height="300px">
+      <Box width="100%" minHeight="250px">
         <Box width="100%">
           <Box as="h1" fontSize="6xl" fontWeight="bold">
             <Typist text={'Right with Sway.'} />
           </Box>
 
-          {isTyping && (
-            <Box my={3} width="100%">
-              <HStack spacing={4}>
-                <Button as={Link} to="/editor">
-                  Check out the Editor <Icon as={FiArrowRight} ml={2} />
-                </Button>
-                <Button colorScheme="blue">
-                  Get the Extension <Icon as={FiArrowRight} ml={2} />
-                </Button>
-              </HStack>
-            </Box>
-          )}
+          <AnimatePresence>
+            {isTyping && (
+              <MotionBox width="100%" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <Text mb={5}>
+                  Fighting bias in the media by raising awareness and providing a platform for
+                  people to eliminate bias in their writing.
+                </Text>
+                <HStack spacing={4}>
+                  <Button as={Link} to="/editor">
+                    Check out the Editor <Icon as={FiArrowRight} ml={2} />
+                  </Button>
+                  <Button colorScheme="blue">
+                    Get the Extension <Icon as={FiArrowRight} ml={2} />
+                  </Button>
+                </HStack>
+              </MotionBox>
+            )}
+          </AnimatePresence>
         </Box>
-      </Center>
+      </Box>
       <Box height="1000px" bgColor="gray">
         xyz
       </Box>
