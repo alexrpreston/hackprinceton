@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get("/")
 async def ping():
-    return "pong"
+    return "pong" 
 
 @app.post("/summarize-bias")
 async def summarize_bias(text: str = Body(...)):
