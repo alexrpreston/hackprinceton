@@ -47,9 +47,8 @@ def classify_bias_level(
 
     return bias_level
 
-@router.websocket("/search")
-async def websocket_endpoint(
-    websocket: WebSocket,
+@router.post("/search")
+async def search_endpoint(
     query: str = Query(..., description="The query to search for."),
 ):
     """
@@ -57,15 +56,17 @@ async def websocket_endpoint(
     """
     results = search.google_search(query, num=10)
 
-    await websocket.accept()
+    return_val = []
 
     for search_result in results:
         html = search.get_html_from_url(search_result["url"])
         bias_level = classify_bias_level(html, type = "html")
 
-        await websocket.send_json({
+        return_val.append({
             "title": BeautifulSoup(search_result["title"], "html.parser").text,
             "snippet": BeautifulSoup(search_result["htmlSnippet"], "html.parser").text,
             "url": search_result["url"],
-            "bias_level": bias_level,
+            "biasLevel": bias_level,
         })
+
+    return return_val
