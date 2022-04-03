@@ -13,4 +13,4 @@ COPY ./src ./src
 
 EXPOSE 80
 
-CMD ["PORT=80", "npm", "start"]
+CMD ["npm", "start"]
