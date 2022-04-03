@@ -20,7 +20,7 @@ var getHTMLCODE = setInterval(function() {
 
             const biasOptions = ["Not biased", "Slightly biased", "Moderately biased", "Very biased", "Extremely biased"];
         let biasResult;
-        const url = "http://localhost:80/api/v1/summarize-bias?type=html";
+        const url = "http://localhost/api/v1/summarize-bias";
         fetch(url, {
             method : "POST",
             body: htmlCode
