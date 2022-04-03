@@ -14,11 +14,13 @@ const Editor: React.FC = () => {
 
   console.log(process.env);
 
+  const baseUrl = process.env.API_URL || 'https://gcp-api-gikn36sjla-uc.a.run.app';
+
   const onClick = () => {
     setIsLoading(true);
 
     axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/classify-bias-level`, value)
+      .post(`${baseUrl}/api/v1/classify-bias-level`, value)
       .then((res) => {
         console.log(res);
         setBiasLevel(res.data);
@@ -30,7 +32,7 @@ const Editor: React.FC = () => {
       });
 
     axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/summarize-bias`, value)
+      .post(`${baseUrl}/api/v1/summarize-bias`, value)
       .then((res) => {
         console.log(res);
         setBias(res.data);
