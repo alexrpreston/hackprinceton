@@ -18,7 +18,7 @@ const Editor: React.FC = () => {
     setIsLoading(true);
 
     axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/classify-bias-level`, value)
+      .post(`${process.env.API_URL}/api/v1/classify-bias-level`, value)
       .then((res) => {
         console.log(res);
         setBiasLevel(res.data);
@@ -30,7 +30,7 @@ const Editor: React.FC = () => {
       });
 
     axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/api/v1/summarize-bias`, value)
+      .post(`${process.env.API_URL}/api/v1/summarize-bias`, value)
       .then((res) => {
         console.log(res);
         setBias(res.data);

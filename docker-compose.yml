@@ -39,7 +39,7 @@ services:
       - 3000:80
     environment:
       - PORT=80
-      - REACT_APP_API_BASE_URL=${API_BASE_URL}
+      - API_URL=${API_URL}
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
     networks:
