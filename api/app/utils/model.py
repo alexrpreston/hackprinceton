@@ -3,6 +3,7 @@ import os, openai
 print(os.environ)
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
+classsification_options = ('not_biased', 'somewhat_biased', 'extremely_biased')
 
 def summarize_bias(text):
     """
@@ -19,11 +20,11 @@ def summarize_bias(text):
 
     response = openai.Completion.create(
         engine = 'text-davinci-002',
-        prompt = prompt,
-        max_tokens = 500,
+        prompt = f"{prompt}\n\n##\n\n",
+        max_tokens = 1500,
         temperature = 0.1,
         top_p = 0.9,
-        n = 3,
+        n = 1,
     )
     if response:
         return response.choices[0].text.split("\n\n")[-1]
@@ -35,5 +36,25 @@ def classify_bias_level(text):
     """
     Classify the bias level of a text.
     """
-    return "Unbiased"
-    # return openai.Completion.create(engine='davinci', prompt=text)
+    model_name = os.environ.get('OPENAI_CLASSIFICATION_MODEL_NAME')
+
+    if not model_name:
+        raise Exception("No model name provided")
+
+    prompt = f'{text}\n\n###\n\n'
+
+    response = openai.Completion.create(
+        model = model_name,
+        prompt = prompt,
+        max_tokens = 5,
+        logprobs = 3,
+    )
+
+    response_text = response.choices[0].text.lower()
+    print(response)
+
+    for bias_level in classsification_options:
+        if bias_level in response_text:
+            return bias_level
+
+    return "not_classified"

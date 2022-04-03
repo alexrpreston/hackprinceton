@@ -26,6 +26,6 @@ def process_text(text):
     :return: processed text string
     """
     text = text.replace('\n', ' ').replace('\r', '')
-    text = text[:3500]
+    text = text[:1400]
 
     return text

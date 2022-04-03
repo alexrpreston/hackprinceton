@@ -40,6 +40,7 @@ def classify_bias_level(
     else:
         raise ValueError("type must be either 'text' or 'html'.")
 
-    model.classify_bias_level(text)
+    cleaned_text = parsing.process_text(text)
+    bias_level = model.classify_bias_level(cleaned_text)
 
-    return "Lorem ipsum..."
+    return bias_level
