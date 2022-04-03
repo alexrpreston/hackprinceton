@@ -63,7 +63,7 @@ const AppContainer: React.FC<Props> = ({ children }) => {
 
       <Box py={10}>{children}</Box>
 
-      <Box position="fixed" bottom={2} left={0} right={0} bgColor="white">
+      <Box position="fixed" bottom={0} left={0} right={0} bgColor="white" pb={2}>
         <Center p={2}>
           <Flex justify="center" align="center" direction="column">
             <Text fontSize="sm">

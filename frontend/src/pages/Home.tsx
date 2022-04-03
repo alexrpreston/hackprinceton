@@ -4,7 +4,7 @@ import { Box, Container, Text, HStack, Button, Icon, Heading } from '@chakra-ui/
 
 import { Link } from 'react-router-dom';
 
-import { FiChrome, FiPenTool, FiSearch, FiArrowRight } from 'react-icons/fi';
+import { FiChrome, FiPenTool, FiSearch, FiArrowRight, FiCode } from 'react-icons/fi';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -65,8 +65,10 @@ const Home: React.FC = () => {
                 extension provides a degree of bias and the cause of the bias (if any exists) for
                 any website, all with the click of a button.
               </Text>
-              <Button as={Link} size="sm" mt={2} to="/extension.zip">
-                Chrome Extension <Icon as={FiArrowRight} ml={2} />
+              <Button size="sm" mt={2}>
+                <a href="/extension.zip">
+                  Chrome Extension <Icon as={FiArrowRight} ml={2} />
+                </a>
               </Button>
             </Box>
 
@@ -97,6 +99,22 @@ const Home: React.FC = () => {
               </Text>
               <Button as={Link} size="sm" mt={2} to="/search">
                 Search <Icon as={FiArrowRight} ml={2} />
+              </Button>
+            </Box>
+
+            <Box py={5}>
+              <HStack pb={1}>
+                <FiCode size={20} />
+                <Heading size="md">Use our API for your own applications.</Heading>
+              </HStack>
+              <Text>
+                Sway's API is available for use in your own applications. It provides a simple
+                interface to identify bias in the media with several exposed endpoints.
+              </Text>
+              <Button size="sm" mt={2}>
+                <a href="https://gcp-api-gikn36sjla-uc.a.run.app/redoc" target="_blank">
+                  API Docs <Icon as={FiArrowRight} ml={2} />
+                </a>
               </Button>
             </Box>
           </MotionBox>
