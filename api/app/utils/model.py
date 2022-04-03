@@ -1,5 +1,6 @@
 import os, openai
 
+print(os.environ)
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
@@ -14,6 +15,8 @@ def summarize_bias(text):
     {text}
     """.split('\n') if line.strip()])
 
+
+
     response = openai.Completion.create(
         engine = 'text-davinci-002',
         prompt = prompt,
@@ -22,9 +25,8 @@ def summarize_bias(text):
         top_p = 0.9,
         n = 3,
     )
-
     if response:
-        return response.choices[0].text
+        return response.choices[0].text.split("\n\n")[-1]
     else:
         raise Exception("No response from model")
 

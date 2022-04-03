@@ -3,18 +3,27 @@
   <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="main.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
 
 
 
   </head>
   <body>
     <div class="card">
-      <h5 class="card-header">Bias in this webpage.</h5>
+      <p class="card-header natoSans fs-4">Bias in this webpage.</p>
       <div class="card-body">
 
         <div id="bias">
-          <label for="biasRange" class="form-label"><span class="fw-bold">Bias:</span> <span id="biasDisplayedValue"></span></label>
-          <input type="range" class="form-range" min="0" value="0" max="4" id="biasRange" disabled>
+          <p class="fw-bold natoSans fs-5">Level of Bias</p>
+          <p id="biaslevel"></p>
+          <div id="reasonForBiasDiv" class="">
+            <hr>
+            <p class="fw-bold natoSans fs-5">Reason for Bias</p> 
+            <p id="biasReason"></p>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -23,7 +32,9 @@
     <div id='message' class="visually-hidden">Injecting Script....</div>
 
 
-
+    <footer class="p-2">
+      <p>Powered by RightWithSway and <br>Made with <span style="color: #e25555;">&#9829;</span> in Texas.</p>
+    </footer>
     
   
   </body>

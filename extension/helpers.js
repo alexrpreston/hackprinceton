@@ -5,31 +5,34 @@ var getHTMLCODE = setInterval(function() {
     var htmlCode = document.getElementById('message').innerHTML;
     if ("Injecting Script...." !== htmlCode) {
     
-        //Call API
-
-
-        // axios.post('https://hackprinceton-hlcv3.ondigitalocean.app/summarize-biasHTML', {
-        //     htmlCode
-        //   })
-        //   .then((response) => {
-        //     console.log(response);
-        //   }, (error) => {
-        //     console.log(error);
-        //   });
-
-
-            const biasOptions = ["Not biased", "Slightly biased", "Moderately biased", "Very biased", "Extremely biased"];
-        let biasResult;
-        const url = "http://localhost:80/api/v1/summarize-bias?type=html";
+        //Get Bias Level
+        // var url = "http://localhost:80/api/v1/classify-bias-level?type=html";
+        // fetch(url, {
+        //     method : "POST",
+        //     body: htmlCode
+        // })
+        // .then(response => response.text())
+        // .then(data => {
+        //     console.log("Data16",data)
+        //     document.getElementById("biaslevel").innerHTML = data;
+        //     // document.getElementById("biasRange").value = biasOptions.indexOf(data);
+        // });
+        console.log("Line 20")
+        //Get Reason for Bias
+        var url = "http://localhost:80/api/v1/summarize-bias?type=html";
         fetch(url, {
             method : "POST",
             body: htmlCode
         })
         .then(response => response.text())
-        .then(data => {
-            console.log("Data",data)
-            document.getElementById("biasDisplayedValue").innerHTML = data;
-            document.getElementById("biasRange").value = biasOptions.indexOf(data);
+        .then(data => { 
+            console.log("Data29",data)
+            document.getElementById("reasonForBiasDiv").classList.remove("visually-hidden");
+            document.getElementById("biasReason").innerHTML = data;
+            // document.getElementById("biasRange").value = biasOptions.indexOf(data);
+        })
+        .catch(error => {
+            console.log(error);
         });
 
         
