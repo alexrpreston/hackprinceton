@@ -14,11 +14,13 @@ const Editor: React.FC = () => {
 
   console.log(process.env);
 
+  const baseUrl = process.env.API_URL || 'https://api.getsway.tech';
+
   const onClick = () => {
     setIsLoading(true);
 
     axios
-      .post(`${process.env.API_URL}/api/v1/classify-bias-level`, value)
+      .post(`${baseUrl}/api/v1/classify-bias-level`, value)
       .then((res) => {
         console.log(res);
         setBiasLevel(res.data);
@@ -30,7 +32,7 @@ const Editor: React.FC = () => {
       });
 
     axios
-      .post(`${process.env.API_URL}/api/v1/summarize-bias`, value)
+      .post(`${baseUrl}/api/v1/summarize-bias`, value)
       .then((res) => {
         console.log(res);
         setBias(res.data);
