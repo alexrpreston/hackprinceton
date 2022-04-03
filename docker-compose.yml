@@ -38,6 +38,7 @@ services:
     ports:
       - 3000:3000
     environment:
+      - API_BASE_URL=${API_BASE_URL}
       - BASE_URL=api:8870
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
