@@ -4,7 +4,7 @@ from app.utils import model, parsing
 
 router = APIRouter()
 
-@router.get("/summarize-bias")
+@router.post("/summarize-bias")
 def summarize_bias(
     input: str = Body(..., description="The text to summarize. Either text or HTML."),
     type: str = Query("text", description="The type of input. Either 'text' or 'html'."),
@@ -19,12 +19,13 @@ def summarize_bias(
     else:
         raise ValueError("type must be either 'text' or 'html'.")
 
-    output = model.summarize_bias(text)
+    cleaned_text = parsing.process_text(text)
+    output = model.summarize_bias(cleaned_text)
 
     return output.strip()
 
 
-@router.get("/classify-bias-level")
+@router.post("/classify-bias-level")
 def classify_bias_level(
     input: str = Body(..., description="The text to summarize. Either text or HTML."),
     type: str = Query("text", description="The type of input. Either 'text' or 'html'."),

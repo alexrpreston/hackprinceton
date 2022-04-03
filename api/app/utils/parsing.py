@@ -8,3 +8,15 @@ def extract_content(html):
     """
     doc = Document(html)
     return doc.summary()
+
+
+def process_text(text):
+    """
+    Converts all newlines to spaces and truncates the text to 3500 characters
+    :param text: text string
+    :return: processed text string
+    """
+    text = text.replace('\n', ' ').replace('\r', '')
+    text = text[:3500]
+
+    return text
