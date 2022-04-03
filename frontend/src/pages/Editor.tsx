@@ -14,7 +14,7 @@ const Editor: React.FC = () => {
 
   console.log(process.env);
 
-  const baseUrl = process.env.API_URL || 'https://api.getsway.tech';
+  const baseUrl = process.env.API_URL || 'https://gcp-api-gikn36sjla-uc.a.run.app';
 
   const onClick = () => {
     setIsLoading(true);
