@@ -4,9 +4,9 @@ import { Box, Input, Button } from '@chakra-ui/react';
 
 const Search = () => {
   const [search, setSearch] = useState('');
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<{ title: string }[]>([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setResults([]);
     fetch(`/api/search?q=${search}`)
