@@ -12,7 +12,10 @@ def extract_content(html):
 
     bs_node = BeautifulSoup(summary, 'html.parser')
 
-    return bs_node.get_text()
+    for tag in bs_node(['style', 'script', '[document]', 'head', 'title']):
+        tag.extract()
+
+    return bs_node.getText()
 
 
 def process_text(text):
