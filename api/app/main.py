@@ -3,11 +3,21 @@ from json import loads
 from app import summarize_text, remove_text_bias
 from bs4 import BeautifulSoup
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def ping():
-    return "pong" 
+    return "pong"
 
 @app.post("/summarize-biasHTML")
 async def summarize_biasHTML(text: str = Body(...)):
