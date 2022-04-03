@@ -2,7 +2,7 @@ import os, openai
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
-classsification_options = ('not biased', 'somewhat biased', 'extremely biased')
+classsification_options = ('not_biased', 'somewhat_biased', 'extremely_biased')
 
 def summarize_bias(text):
     """
@@ -18,10 +18,10 @@ def summarize_bias(text):
     response = openai.Completion.create(
         engine = 'text-davinci-002',
         prompt = prompt,
-        max_tokens = 500,
+        max_tokens = 1500,
         temperature = 0.1,
         top_p = 0.9,
-        n = 3,
+        n = 1,
     )
 
     if response:
@@ -39,16 +39,20 @@ def classify_bias_level(text):
     if not model_name:
         raise Exception("No model name provided")
 
+    prompt = f'{text}\n\n###\n\n'
+
     response = openai.Completion.create(
-        model = 'ada:ft-personal-2022-04-03-06-00-38',
-        prompt = text,
-        logprobs = 2,
+        model = model_name,
+        prompt = prompt,
+        max_tokens = 1,
+        logprobs = 3,
     )
 
     response_text = response.choices[0].text.lower()
+    print(response)
 
     for bias_level in classsification_options:
         if bias_level in response_text:
             return bias_level
 
-    raise Exception("No bias level found")
+    return "not_classified"
