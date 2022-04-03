@@ -1,12 +1,10 @@
-FROM python:3.10.0
+FROM python:3.9
 
-WORKDIR /app
+WORKDIR /code
 
-RUN pip install --upgrade pip
-COPY requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+COPY ./requirements.txt /code/requirements.txt
 
-COPY ./app /app
+RUN pip3 install --no-cache-dir --upgrade -r /code/requirements.txt
 
 EXPOSE 80
 
