@@ -1,13 +1,10 @@
 {
-  "name": "Right with Sway",
-  "description": "Eliminate bias in the news with Right with Sway.",
+  "name": "Get pages source",
   "version": "1.0",
-  "manifest_version": 3,
-  "background": {
-    "service_worker": "background.js"
+  "manifest_version": 2,
+  "description": "Get pages source from a popup",
+  "browser_action": {
+    "default_popup": "popup.html"
   },
-  "action": {
-    "default_popup": "interface.html",
-    "default_title": "Right with Sway"
-  }
+  "permissions": ["tabs", "<all_urls>"]
 }
