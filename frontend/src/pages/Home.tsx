@@ -65,7 +65,7 @@ const Home: React.FC = () => {
                 extension provides a degree of bias and the cause of the bias (if any exists) for
                 any website, all with the click of a button.
               </Text>
-              <Button size="sm" mt={2}>
+              <Button as={Link} size="sm" mt={2} to="/extension.zip">
                 Chrome Extension <Icon as={FiArrowRight} ml={2} />
               </Button>
             </Box>
