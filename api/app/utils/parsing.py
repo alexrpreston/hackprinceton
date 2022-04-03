@@ -1,4 +1,5 @@
 from readability import Document
+from bs4 import BeautifulSoup
 
 def extract_content(html):
     """
@@ -7,7 +8,11 @@ def extract_content(html):
     :return: summary string
     """
     doc = Document(html)
-    return doc.summary()
+    summary = doc.summary()
+
+    bs_node = BeautifulSoup(summary, 'html.parser')
+
+    return bs_node.get_text()
 
 
 def process_text(text):
