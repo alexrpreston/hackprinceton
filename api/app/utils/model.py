@@ -17,7 +17,7 @@ def summarize_bias(text):
 
     response = openai.Completion.create(
         engine = 'text-davinci-002',
-        prompt = prompt,
+        prompt = f"{prompt}\n\n##\n\n",
         max_tokens = 1500,
         temperature = 0.1,
         top_p = 0.9,
