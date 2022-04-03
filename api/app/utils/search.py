@@ -24,4 +24,5 @@ def google_search(search_term, **kwargs):
 
 def get_html_from_url(url):
     res = requests.get(url)
-    return res.content
+
+    return res.text
