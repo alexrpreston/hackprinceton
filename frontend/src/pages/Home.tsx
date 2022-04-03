@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import {
-  Box,
-  Container,
-  Text,
-  Center,
-  HStack,
-  Button,
-  Spacer,
-  Icon,
-  Heading,
-} from '@chakra-ui/react';
+import { Box, Container, Text, HStack, Button, Icon, Heading } from '@chakra-ui/react';
 
 import { Link } from 'react-router-dom';
 
