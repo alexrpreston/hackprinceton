@@ -2,6 +2,7 @@ from fastapi import FastAPI, Body
 from json import loads
 from app import summarize_text, remove_text_bias, search_bias
 from bs4 import BeautifulSoup
+from readability import Document
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -21,7 +22,8 @@ async def ping():
 
 @app.post("/summarize-biasHTML")
 async def summarize_biasHTML(text: str = Body(...)):
-    soup = BeautifulSoup(text, 'html.parser')
+    text = Document(text)
+    soup = BeautifulSoup(text.summary(), 'html.parser')
     text = soup.get_text()
     return summarize_text.summarize_text(text)
 

@@ -6,15 +6,33 @@ var getHTMLCODE = setInterval(function() {
     if ("Injecting Script...." !== htmlCode) {
     
         //Call API
-        setTimeout(2000)
 
-        document.getElementById('genderBiasRange').value = 100;
-        document.getElementById('politicalBiasRange').value = -100;
-        document.getElementById('ageBiasRange').value = 100;    
 
-        document.getElementById("genderBiasDisplayedValue").innerHTML = "+1.0";
-        document.getElementById("politicalBiasDisplayedValue").innerHTML = "-1.0";
-        document.getElementById("ageBiasDisplayedValue").innerHTML = "1.0";
+        // axios.post('https://hackprinceton-hlcv3.ondigitalocean.app/summarize-biasHTML', {
+        //     htmlCode
+        //   })
+        //   .then((response) => {
+        //     console.log(response);
+        //   }, (error) => {
+        //     console.log(error);
+        //   });
+
+
+            const biasOptions = ["Not biased", "Slightly biased", "Moderately biased", "Very biased", "Extremely biased"];
+        let biasResult;
+        const url = "https://hackprinceton-hlcv3.ondigitalocean.app/summarize-biasHTML";
+        fetch(url, {
+            method : "POST",
+            body: {htmlCode}
+        }).then(response => response.json())
+        .then(data => {
+            document.getElementById("biasDisplayedValue").innerHTML = data;
+            document.getElementById("biasRange").value = biasOptions.indexOf(data);
+        });
+
+        
+
+        //  = biasResult;
         
         clearInterval(getHTMLCODE);
 
@@ -24,4 +42,4 @@ var getHTMLCODE = setInterval(function() {
 
 
 
-},100);
+},1000);
