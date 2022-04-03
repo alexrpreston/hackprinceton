@@ -66,8 +66,8 @@ const Search = () => {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const baseUrl = process.env.API_URL || 'https://gcp-api-gikn36sjla-uc.a.run.app';
-  const baseUrl = 'http://localhost';
+  const baseUrl = process.env.API_URL || 'https://gcp-api-gikn36sjla-uc.a.run.app';
+  // const baseUrl = 'http://localhost';
 
   const handleSubmit = (e?: React.SyntheticEvent<HTMLFormElement>) => {
     e?.preventDefault();
