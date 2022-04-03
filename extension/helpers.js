@@ -20,12 +20,14 @@ var getHTMLCODE = setInterval(function() {
 
             const biasOptions = ["Not biased", "Slightly biased", "Moderately biased", "Very biased", "Extremely biased"];
         let biasResult;
-        const url = "https://hackprinceton-hlcv3.ondigitalocean.app/summarize-biasHTML";
+        const url = "http://localhost:80/api/v1/summarize-bias?type=html";
         fetch(url, {
             method : "POST",
-            body: {htmlCode}
-        }).then(response => response.json())
+            body: htmlCode
+        })
+        .then(response => response.text())
         .then(data => {
+            console.log("Data",data)
             document.getElementById("biasDisplayedValue").innerHTML = data;
             document.getElementById("biasRange").value = biasOptions.indexOf(data);
         });
