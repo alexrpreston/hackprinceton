@@ -28,6 +28,8 @@ async def summarize_biasHTML(text: str = Body(...)):
     text = soup.get_text()
     cleanedText = text.replace("\n"," ").replace("\r", "")
     print(cleanedText)
+    print(type(cleanedText))
+    print(cleanedText.__dict__)
     print(summarize_text.summarize_text(cleanedText))
     return summarize_text.summarize_text(cleanedText)
 
