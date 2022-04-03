@@ -26,6 +26,7 @@ def summarize_bias(text):
         top_p = 0.9,
         n = 1,
     )
+
     if response:
         return response.choices[0].text.split("\n\n")[-1]
     else:
