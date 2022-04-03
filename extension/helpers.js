@@ -6,19 +6,21 @@ var getHTMLCODE = setInterval(function() {
     if ("Injecting Script...." !== htmlCode) {
     
         //Get Bias Level
-        // var url = "http://localhost:80/api/v1/classify-bias-level?type=html";
-        // fetch(url, {
-        //     method : "POST",
-        //     body: htmlCode
-        // })
-        // .then(response => response.text())
-        // .then(data => {
-        //     console.log("Data16",data)
-        //     document.getElementById("biaslevel").innerHTML = data;
-        //     // document.getElementById("biasRange").value = biasOptions.indexOf(data);
-        // });
+        document.getElementById("biaslevel").innerHTML = "Loading...";
+        var url = "http://localhost:80/api/v1/classify-bias-level?type=html";
+        fetch(url, {
+            method : "POST",
+            body: htmlCode
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log("Data16",data)
+            document.getElementById("biaslevel").innerHTML = data;
+            // document.getElementById("biasRange").value = biasOptions.indexOf(data);
+        });
         console.log("Line 20")
         //Get Reason for Bias
+        document.getElementById("biasReason").innerHTML = "Loading...";
         var url = "http://localhost:80/api/v1/summarize-bias?type=html";
         fetch(url, {
             method : "POST",
@@ -47,4 +49,4 @@ var getHTMLCODE = setInterval(function() {
 
 
 
-},1000);
+},100);
