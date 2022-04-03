@@ -4,10 +4,11 @@ services:
   api:
     build: api/
     volumes:
-      - ./api/:/app
+      - ./api/:/code
     ports:
       - 80:80
     environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
       - EXAMPLE_ENV=XYZ
       - DB_URI=postgresql://postgres:postgres@postgres:5432/hackpton
       - OPENAIAPIKEY=${OPENAPIKEY}
