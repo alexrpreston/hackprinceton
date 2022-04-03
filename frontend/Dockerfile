@@ -11,6 +11,4 @@ RUN npm install framer-motion@3.10.6
 
 COPY ./src ./src
 
-EXPOSE 80
-
 CMD ["npm", "start"]
