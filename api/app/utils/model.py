@@ -55,6 +55,13 @@ def classify_bias_level(text):
 
     for bias_level in classsification_options:
         if bias_level in response_text:
-            return bias_level
+            if bias_level == 'not_biased':
+                return 'Not biased'
+            elif bias_level == 'somewhat_biased':
+                return 'Somewhat biased'
+            elif bias_level == 'extremely_biased':
+                return 'Extremely biased'
+            else:
+                raise Exception("Unknown bias level")
 
-    return "not_classified"
+    return "Couldn't classify bias level"
