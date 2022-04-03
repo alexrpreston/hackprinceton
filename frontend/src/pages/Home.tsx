@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-import { Box, Container, Text, Center, HStack, Button, Spacer, Icon } from '@chakra-ui/react';
+import {
+  Box,
+  Container,
+  Text,
+  Center,
+  HStack,
+  Button,
+  Spacer,
+  Icon,
+  Heading,
+} from '@chakra-ui/react';
 
 import { Link } from 'react-router-dom';
 
-import { FiArrowRight } from 'react-icons/fi';
+import { FiChrome, FiPenTool, FiSearch, FiArrowRight } from 'react-icons/fi';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -38,7 +48,7 @@ const Home = () => {
                 </Text>
                 <HStack spacing={4}>
                   <Button as={Link} to="/editor">
-                    Check out the Editor <Icon as={FiArrowRight} ml={2} />
+                    Eliminate bias with our Editor <Icon as={FiArrowRight} ml={2} />
                   </Button>
                   <Button colorScheme="blue">
                     Get the Extension <Icon as={FiArrowRight} ml={2} />
@@ -49,9 +59,45 @@ const Home = () => {
           </AnimatePresence>
         </Box>
       </Box>
-      <Box height="1000px" bgColor="gray">
-        xyz
-      </Box>
+
+      <AnimatePresence>
+        {isTyping && (
+          <MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Box pb={5}>
+              <HStack pb={1}>
+                <FiChrome size={20} />
+                <Heading size="md">Identify bias in the media</Heading>
+              </HStack>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
+                congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
+              </Text>
+            </Box>
+
+            <Box py={5}>
+              <HStack pb={1}>
+                <FiPenTool size={20} />
+                <Heading size="md">Understand hidden biases in your own work</Heading>
+              </HStack>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
+                congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
+              </Text>
+            </Box>
+
+            <Box py={5}>
+              <HStack pb={1}>
+                <FiSearch size={20} />
+                <Heading size="md">Search in a bias-conscious manner</Heading>
+              </HStack>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, urna eu
+                congue consectetur, nisi nisl aliquam nunc, eget egestas nisl nisi eu nisi.
+              </Text>
+            </Box>
+          </MotionBox>
+        )}
+      </AnimatePresence>
     </Container>
   );
 };
