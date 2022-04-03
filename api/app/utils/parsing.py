@@ -1,5 +1,6 @@
 from readability import Document
 from bs4 import BeautifulSoup
+from html import unescape
 
 def extract_content(html):
     """
@@ -7,7 +8,7 @@ def extract_content(html):
     :param html: html string
     :return: summary string
     """
-    doc = Document(html)
+    doc = Document(unescape(html))
     summary = doc.summary()
 
     bs_node = BeautifulSoup(summary, 'html.parser')
